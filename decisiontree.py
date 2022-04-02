@@ -35,10 +35,10 @@ Y = dataset[:,10]
 # print('Y',Y)
 X = np.asarray(X).astype('float32')
 Y = np.asarray(Y).astype('float32')
-# min_max_scaler = preprocessing.MinMaxScaler()
-# X_scale = min_max_scaler.fit_transform(X)
-# X_train, X_val_and_test, Y_train, Y_val_and_test = train_test_split(X_scale, Y, test_size=0.3)
-X_train, X_val_and_test, Y_train, Y_val_and_test = train_test_split(X, Y, test_size=0.3)
+min_max_scaler = preprocessing.MinMaxScaler()
+X_scale = min_max_scaler.fit_transform(X)
+X_train, X_val_and_test, Y_train, Y_val_and_test = train_test_split(X_scale, Y, test_size=0.3)
+# X_train, X_val_and_test, Y_train, Y_val_and_test = train_test_split(X, Y, test_size=0.3)
 X_val, X_test, Y_val, Y_test = train_test_split(X_val_and_test, Y_val_and_test, test_size=0.5)
 
 # fit final model
@@ -63,7 +63,7 @@ for i in range(len(X_test)):
 # print("r2_score:",metrics.r2_score(Y_test, ynew))
 
 from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 6)
+accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 7)
 print("Accuracy:",accuracies.mean())
 print("Std",accuracies.std())
 
