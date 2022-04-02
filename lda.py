@@ -51,8 +51,10 @@ y_mean = y_sum / len(Y_test)
 ssr = 0
 sst = 0
 ynew = model.predict(X_test)
-# for i in range(len(X_test)):
-#     print("X= {}, True_Y= {} ,Predicted= {}".format(X_test[i], Y_test[i] ,ynew[i]))
+
+for i in range(len(X_test)):
+    print("X= {}, True_Y= {} ,Predicted= {}".format(X_test[i], Y_test[i] ,ynew[i]))
+
 #     ssr += (Y_test[i] - ynew[i])**2
 #     sst += (Y_test[i] - y_mean)**2
 # r2 = 1 - (ssr/sst)
@@ -60,6 +62,6 @@ ynew = model.predict(X_test)
 # print("r2_score:",metrics.r2_score(Y_test, ynew))
 
 from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 2)
-print(accuracies.mean())
-print(accuracies.std())
+accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 4)
+print("Accuracy:",accuracies.mean())
+print("Std",accuracies.std())
