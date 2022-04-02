@@ -56,12 +56,6 @@ ynew = model.predict(X_test)
 for i in range(len(X_test)):
     print("X= {}, True_Y= {} ,Predicted= {}".format(X_test[i], Y_test[i] ,ynew[i]))
 
-#     ssr += (Y_test[i] - ynew[i])**2
-#     sst += (Y_test[i] - y_mean)**2
-# r2 = 1 - (ssr/sst)
-# print("R^2 value:",r2)
-# print("r2_score:",metrics.r2_score(Y_test, ynew))
-
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 8)
 print("Accuracy:",accuracies.mean())
