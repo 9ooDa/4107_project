@@ -50,12 +50,6 @@ X_val, X_test, Y_val, Y_test = train_test_split(X_val_and_test, Y_val_and_test, 
 model = KNeighborsClassifier(n_neighbors=1)
 Y_train = Y_train.astype('int')
 model.fit(X_train, Y_train)
-y_sum = 0
-for ind in range(len(Y_test)):
-    y_sum += Y_test[ind]
-y_mean = y_sum / len(Y_test)
-ssr = 0
-sst = 0
 ynew = model.predict(X_test)
 
 for i in range(len(X_test)):
