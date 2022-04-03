@@ -62,9 +62,4 @@ ynew = model.predict(X_test)
 for i in range(len(X_test)):
     print("X= {}, True_Y= {} ,Predicted= {}".format(X_test[i], Y_test[i] ,ynew[i]))
 
-from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 4)
-print("Accuracy:",accuracies.mean())
-print("Std",accuracies.std())
-
 print("Accuracy Score:", model.score(X_test,Y_test))
