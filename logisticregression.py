@@ -67,4 +67,4 @@ accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 4
 print("Accuracy:",accuracies.mean())
 print("Std",accuracies.std())
 
-print("Score:", model.score(X_test,Y_test))
+print("Accuracy Score:", model.score(X_test,Y_test))
