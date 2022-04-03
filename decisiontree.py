@@ -61,6 +61,8 @@ accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 7
 print("Accuracy:",accuracies.mean())
 print("Std",accuracies.std())
 
+print("Score:", model.score(X_test,Y_test))
+
 from matplotlib import pyplot as plt
 from sklearn import tree
 
