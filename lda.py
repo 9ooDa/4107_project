@@ -25,11 +25,19 @@ df['Checking account'] = df['Checking account'].replace(['little'],1)
 df['Checking account'] = df['Checking account'].replace(['moderate'],2)
 df['Checking account'] = df['Checking account'].replace(['quite rich'],3)
 df['Checking account'] = df['Checking account'].replace(['rich'],4)
+df['Purpose'] = df['Purpose'].replace(['radio/TV'],0)
+df['Purpose'] = df['Purpose'].replace(['domestic appliances'],1)
+df['Purpose'] = df['Purpose'].replace(['furniture/equipment'],2)
+df['Purpose'] = df['Purpose'].replace(['repairs'],3)
+df['Purpose'] = df['Purpose'].replace(['vacation/others'],4)
+df['Purpose'] = df['Purpose'].replace(['car'],5)
+df['Purpose'] = df['Purpose'].replace(['education'],6)
+df['Purpose'] = df['Purpose'].replace(['business'],7)
 df['Risk'] = df['Risk'].replace(['good'],1)
 df['Risk'] = df['Risk'].replace(['bad'],0)
 
 dataset = df.values
-X = dataset[:,1:9]
+X = dataset[:,1:10]
 Y = dataset[:,10]
 
 X = np.asarray(X).astype('float32')
@@ -56,7 +64,7 @@ for i in range(len(X_test)):
     print("X= {}, True_Y= {} ,Predicted= {}".format(X_test[i], Y_test[i] ,ynew[i]))
 
 from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 4)
+accuracies = cross_val_score(estimator = model, X = X_train, y = Y_train, cv = 8)
 print("Accuracy:",accuracies.mean())
 print("Std",accuracies.std())
 
